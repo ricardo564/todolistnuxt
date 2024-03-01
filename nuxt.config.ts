@@ -19,4 +19,11 @@ export default defineNuxtConfig({
       "./utils",
     ],
   },
+  components: {
+    global: true,
+    dirs: ['~/blocks', '~/components'],
+  },
+  typescript: {
+    strict: true,
+  },
 })
