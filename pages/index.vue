@@ -1,10 +1,8 @@
-<script setup lang="ts">
-import TodoImage from '@/blocks/todoImage.vue';
-
-</script>
 <template>
-    <h1 class="mx-auto text-xl">
+    <h1 class="mx-auto text-3xl">
         Todo - List
     </h1>
-    <TodoImage />
+    <div class="flex gap-4 flex-wrap group">
+      <TodoCardView />
+    </div>
 </template>
