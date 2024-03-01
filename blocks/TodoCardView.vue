@@ -1,15 +1,27 @@
+<script setup lang="ts">
+interface Props {
+  toDoList: any[];
+}
+
+const props = defineProps<Props>()
+</script>
 <template>
-  <div class="flex flex-col w-[17rem] border rounded-xl shadow-md hover:shadow relative">
+  <div
+    v-for="todo in props.toDoList"
+    class="flex flex-col w-[17rem] border rounded-xl shadow-md hover:shadow relative"
+    key="todo.id"
+  >
     <div class="h-[15rem]">
-      <TodoImage />
+      <TodoImage
+        :imageId="todo.imageId"
+      />
     </div>
-    <div class="w-[16rem] max-h-[15rem] overflow-hidden overflow-y-auto mx-auto p-5">
+    <div class="w-[16rem] max-h-[15rem] mx-auto p-5">
       <p class="text-2xl font-bold mx-auto h-[2rem] max-w-[15rem] overflow-hidden truncate text-ellipsis">
-        This is a todo list Item
+        {{ todo.title }}
       </p>
-      <p>
-        Description of the todo list
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur amet ratione ex, dolorum repellat ullam fuga vero exercitationem quia impedit aut nihil, perferendis voluptatem dignissimos corporis aliquid sapiente optio dolores.
+      <p class="h-full min-h-[16rem] overflow-hidden overflow-y-auto">
+        {{ todo.description }}
       </p>
     </div>
     <div class="flex">
