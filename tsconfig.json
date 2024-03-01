@@ -1,4 +1,39 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "rootDir": ".",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "strict": true,
+    "allowJs": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node",
+      "nuxt-windicss",
+      "vue-sweetalert2"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+    }
+  },
+  "extends": "./.nuxt/tsconfig.json",
+  "include": [
+    "*.d.ts",
+    "./nuxt.d.ts",
+    "env.d.ts",
+    ".nuxt/nuxt.d.ts",
+    "**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.vue"
+  ],
+  "exclude": [
+    "../dist"
+  ]
 }
