@@ -1,3 +1,5 @@
 <template>
-    <h1>Todo - List</h1>
+    <h1 class="mx-auto text-xl">
+        Todo - List
+    </h1>
 </template>
