@@ -3,5 +3,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/tailwindcss',
-  ]
+    '@formkit/nuxt',
+  ],
+  formkit: {
+    // Experimental support for auto loading (see note):
+    autoImport: true
+  },
+  imports: {
+    autoImport: true,
+    dirs: [
+      "./blocks",
+      "./components",
+      "./configs",
+      "./utils",
+    ],
+  },
 })
