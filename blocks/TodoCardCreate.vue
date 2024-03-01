@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const emits = defineEmits(['refreshTodoList']);
+
 const imageId = ref<string>('');
 
 const setImageId = (id: string) => {
@@ -6,14 +8,19 @@ const setImageId = (id: string) => {
 }
 
 const saveTodoOnLocalStorage = (form: any) => {
-  console.log(form);
+  const todoList = JSON.parse(getItemFromLocalStorage('todo-list'));
   const todoId = generateId();
+
   const data = {
     ...form,
+    id: todoId,
     imageId: imageId.value,
   };
 
-  saveItemOnLocalStorage(todoId, JSON.stringify(data));
+  const newTodoList = todoList ? [...todoList, data] : [data];
+
+  saveItemOnLocalStorage('todo-list', JSON.stringify(newTodoList));
+  emits('refreshTodoList');
 }
 </script>
 <template>
