@@ -13,10 +13,12 @@ export const removeItemFromLocalStorage = (itemName: string) => {
   }
 }
 
-export const getItemFromLocalStorage = (itemName: string) => {
+export const getItemFromLocalStorage = (itemName: string):string => {
   if (typeof window !== "undefined") {
     const itemValue = window.localStorage.getItem(itemName)
 
-    return itemValue
+    return String(itemValue)
   }
+
+  return ""
 }
