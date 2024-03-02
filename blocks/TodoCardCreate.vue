@@ -24,20 +24,21 @@ const saveTodoOnLocalStorage = (form: any) => {
 }
 </script>
 <template>
-  <div class="flex flex-col w-[17rem] border rounded-xl shadow-md hover:shadow relative">
-    <div class="h-[15rem]">
+  <div class="max-w-[45rem] flex md:flex-row flex-col border rounded-xl shadow-md hover:shadow relative p-2 md:p-5">
+    <div class="h-[13rem] my-auto mb-b">
       <TodoImage
         @saveImageId="setImageId"
       />
     </div>
     <FormKit
-    type="form"
-    id="registration-example"
-    submit-label="Register"
-    @submit="saveTodoOnLocalStorage"
-    :actions="false"
+      class="w-full max-h-[15rem] overflow-hidden overflow-y-auto mx-auto px-2"
+      type="form"
+      id="registration-example"
+      submit-label="Register"
+      @submit="saveTodoOnLocalStorage"
+      :actions="false"
     >
-      <div class="w-[16rem] max-h-[15rem] overflow-hidden overflow-y-auto mx-auto px-2">
+      <div class="flex md:flex-row flex-col gap-4 w-full max-h-[16rem] overflow-hidden overflow-y-auto mx-auto px-2">
         <div>
           <FormKit
             type="text"
@@ -63,7 +64,7 @@ const saveTodoOnLocalStorage = (form: any) => {
         <FormKit
           type="submit"
           class="w-full bg-green-500 text-white border-white border"
-          label="Criar Todo"
+          label="Criar item"
         />
       </div>
     </FormKit>
