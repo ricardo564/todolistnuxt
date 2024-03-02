@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 
+interface Props {
+  imageId?: string;
+}
+
+const props = defineProps<Props>()
+
 const emits = defineEmits(['saveImageId']);
 
 const imageUrl = ref<string>('https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg');
@@ -13,6 +19,13 @@ const saveImageOnLocalStorage = (url: string) => {
   const imageId = generateId();
   saveItemOnLocalStorage(imageId, url);
   emits('saveImageId', imageId);
+}
+
+const getImageFromLocalStorage = (id: string) => {
+  const image = getItemFromLocalStorage(id);
+  if(image) {
+    setImageUrl(image);
+  }
 }
 
 const updateOnChange = (event: Event) => {
@@ -33,6 +46,12 @@ const updateOnChange = (event: Event) => {
     saveImageOnLocalStorage(url);
   })
 };
+
+onMounted(() => {
+  if(props.imageId) {
+    getImageFromLocalStorage(props.imageId);
+  }
+})
 
 </script>
 <template>
