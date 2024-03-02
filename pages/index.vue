@@ -13,15 +13,18 @@ onMounted(() => {
 
 </script>
 <template>
-    <h1 class="mx-auto text-3xl">
-        Todo - List
-    </h1>
-    <div class="flex gap-4 flex-wrap group">
-      <TodoCardCreate
-        @refreshTodoList="setToDoList"
-      />
-      <TodoCardView
-        :toDoList="toDoList.reverse()"
-      />
+  <div class="grid gap-4 pt-4">
+    <div class="grid gap-4">
+      <div class="mx-auto">
+        <TodoCardCreate
+          @refreshTodoList="setToDoList"
+        />
+      </div>
+      <div class="flex justify-center gap-4 flex-wrap group">
+        <TodoCardView
+          :toDoList="toDoList.reverse()"
+        />
+      </div>
     </div>
+  </div>
 </template>
