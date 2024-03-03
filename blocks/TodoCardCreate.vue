@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { reset } from '@formkit/core'
+
 const emits = defineEmits(['refreshTodoList']);
 
 const imageId = ref<string>('');
@@ -7,7 +9,11 @@ const setImageId = (id: string) => {
   imageId.value = id;
 }
 
-const saveTodoOnLocalStorage = (form: any) => {
+const resetForm = () => {
+    reset('todo-create-form');
+}
+
+const saveTodoOnLocalStorage = async(form: any) => {
   const todoList = JSON.parse(getItemFromLocalStorage('todo-list'));
   const todoId = generateId();
 
@@ -19,8 +25,9 @@ const saveTodoOnLocalStorage = (form: any) => {
 
   const newTodoList = todoList ? [...todoList, data] : [data];
 
-  saveItemOnLocalStorage('todo-list', JSON.stringify(newTodoList));
+  await saveItemOnLocalStorage('todo-list', JSON.stringify(newTodoList));
   emits('refreshTodoList');
+  resetForm();
 }
 </script>
 <template>
@@ -33,7 +40,7 @@ const saveTodoOnLocalStorage = (form: any) => {
     <FormKit
       class="w-full max-h-[15rem] overflow-hidden overflow-y-auto mx-auto px-2"
       type="form"
-      id="registration-example"
+      id="todo-create-form"
       submit-label="Register"
       @submit="saveTodoOnLocalStorage"
       :actions="false"
