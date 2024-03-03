@@ -22,7 +22,7 @@ onMounted(() => {
       </div>
       <div class="flex justify-center gap-4 flex-wrap group">
         <TodoCardView
-          :toDoList="toDoList.reverse()"
+          :toDoList="toDoList"
         />
       </div>
     </div>
